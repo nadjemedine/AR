@@ -64,7 +64,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between">
           {/* Mobile Menu Button */}
           <button 
-            className="md:hidden p-2 -ml-2 text-foreground"
+            className="md:hidden p-2 -ml-2 text-primary hover:text-primary/80 transition-colors"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             <Menu className="w-6 h-6" />
@@ -73,13 +73,12 @@ export default function Navbar() {
           {/* Logo */}
           <Link href="/" className="flex-1 flex justify-center md:justify-start items-center relative h-10">
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 md:left-0 md:translate-x-0 -translate-y-1/2 w-[100px]">
-              <Image 
-                src="/logo.png" 
-                alt="Mounlek Collection" 
+              <img 
+                src="/logo.png?v=2" 
+                alt="AR Collection" 
                 width={100} 
                 height={100} 
                 className="w-full h-auto object-contain"
-                priority
               />
             </div>
           </Link>
@@ -93,7 +92,7 @@ export default function Navbar() {
 
           <div className="flex items-center gap-4 flex-1 justify-end">
             <form onSubmit={handleSearch} className="hidden md:flex items-center bg-secondary rounded-full px-3 py-1.5 focus-within:ring-2 focus-within:ring-primary/20 transition-all">
-              <button type="submit" className="text-muted-foreground mr-2 hover:text-foreground">
+              <button type="submit" className="text-primary mr-2 hover:text-primary/80 transition-colors">
                 <Search className="w-4 h-4" />
               </button>
               <input 
@@ -105,14 +104,14 @@ export default function Navbar() {
               />
             </form>
             <button 
-              className="md:hidden p-2 hover:text-primary transition-colors"
+              className="md:hidden p-2 text-primary hover:text-primary/80 transition-colors"
               onClick={() => setMobileSearchOpen(!mobileSearchOpen)}
             >
               <Search className="w-5 h-5" />
             </button>
             <button 
               onClick={() => setIsCartOpen(true)}
-              className="p-2 hover:text-primary transition-colors relative"
+              className="p-2 text-primary hover:text-primary/80 transition-colors relative"
             >
               <ShoppingCart className="w-5 h-5" />
               {mounted && totalItems > 0 && (

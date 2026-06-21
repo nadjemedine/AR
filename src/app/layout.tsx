@@ -9,8 +9,11 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "Mounlek Collection",
+  title: "AR Collection",
   description: "Boutique de vêtements élégants",
+  icons: {
+    icon: '/favicon.png',
+  },
 };
 
 export default function RootLayout({

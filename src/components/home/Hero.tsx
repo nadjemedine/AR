@@ -49,7 +49,7 @@ export default function Hero() {
   const btnText = heroSettings?.button_text || "Découvrir maintenant";
   const btnLink = heroSettings?.button_link || "/categories";
   
-  const imageUrl = heroSettings?.image_url || null;
+  const imageUrl = heroSettings?.image_url || "/hero.jpg";
   const isWhite = (heroSettings?.text_color || 'white') === 'white';
   const txtCls = isWhite ? 'text-white' : 'text-black';
   const subtitleCls = isWhite ? 'text-white/80' : 'text-black/70';

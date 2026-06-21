@@ -13,6 +13,9 @@ CREATE TABLE categories (
 
 ALTER TABLE categories ENABLE ROW LEVEL SECURITY;
 CREATE POLICY "Allow public read access to categories" ON categories FOR SELECT USING (true);
+CREATE POLICY "Allow admin insert categories" ON categories FOR INSERT TO authenticated WITH CHECK (true);
+CREATE POLICY "Allow admin update categories" ON categories FOR UPDATE TO authenticated USING (true) WITH CHECK (true);
+CREATE POLICY "Allow admin delete categories" ON categories FOR DELETE TO authenticated USING (true);
 
 -- Hero Settings Table (single row for homepage hero)
 CREATE TABLE hero_settings (
@@ -32,6 +35,9 @@ CREATE TABLE hero_settings (
 
 ALTER TABLE hero_settings ENABLE ROW LEVEL SECURITY;
 CREATE POLICY "Allow public read access to hero_settings" ON hero_settings FOR SELECT USING (true);
+CREATE POLICY "Allow admin insert hero_settings" ON hero_settings FOR INSERT TO authenticated WITH CHECK (true);
+CREATE POLICY "Allow admin update hero_settings" ON hero_settings FOR UPDATE TO authenticated USING (true) WITH CHECK (true);
+CREATE POLICY "Allow admin delete hero_settings" ON hero_settings FOR DELETE TO authenticated USING (true);
 
 -- Products Table
 CREATE TABLE products (
@@ -83,9 +89,9 @@ ALTER TABLE order_items ENABLE ROW LEVEL SECURITY;
 CREATE POLICY "Allow public read access to products" 
 ON products FOR SELECT USING (true);
 
-CREATE POLICY "Allow admin insert products" ON products FOR INSERT WITH CHECK (auth.role() = 'authenticated');
-CREATE POLICY "Allow admin update products" ON products FOR UPDATE USING (auth.role() = 'authenticated');
-CREATE POLICY "Allow admin delete products" ON products FOR DELETE USING (auth.role() = 'authenticated');
+CREATE POLICY "Allow admin insert products" ON products FOR INSERT TO authenticated WITH CHECK (true);
+CREATE POLICY "Allow admin update products" ON products FOR UPDATE TO authenticated USING (true) WITH CHECK (true);
+CREATE POLICY "Allow admin delete products" ON products FOR DELETE TO authenticated USING (true);
 
 -- Order Policies
 CREATE POLICY "Allow public insert to orders" 
@@ -95,7 +101,7 @@ CREATE POLICY "Allow public insert to order_items"
 ON order_items FOR INSERT WITH CHECK (true);
 
 -- Admin Order Policies
-CREATE POLICY "Allow admin read orders" ON orders FOR SELECT USING (auth.role() = 'authenticated');
-CREATE POLICY "Allow admin update orders" ON orders FOR UPDATE USING (auth.role() = 'authenticated');
-CREATE POLICY "Allow admin delete orders" ON orders FOR DELETE USING (auth.role() = 'authenticated');
-CREATE POLICY "Allow admin read order_items" ON order_items FOR SELECT USING (auth.role() = 'authenticated');
+CREATE POLICY "Allow admin read orders" ON orders FOR SELECT TO authenticated USING (true);
+CREATE POLICY "Allow admin update orders" ON orders FOR UPDATE TO authenticated USING (true) WITH CHECK (true);
+CREATE POLICY "Allow admin delete orders" ON orders FOR DELETE TO authenticated USING (true);
+CREATE POLICY "Allow admin read order_items" ON order_items FOR SELECT TO authenticated USING (true);

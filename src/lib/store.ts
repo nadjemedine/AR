@@ -71,7 +71,7 @@ export const useCartStore = create<CartStore>()(
       },
     }),
     {
-      name: 'la-marque-cart',
+      name: 'ar-collection-cart',
     }
   )
 );
